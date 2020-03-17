@@ -1,18 +1,11 @@
 # vivado-docker
 
-Vivado installed into a docker image for CI purposes.
+Vivado installed into a docker image for CD purposes. E.g., for use in a Jenkins pipeline.
 
 ## Build instructions
 
-1. Copy the Vivado installation package `Xilinx_Vivado_SDK_2018.3_1207_2324.tar.gz` to this folder.
-3. Potentialy modify the `install_config.txt` to change the install options.
-4. Build the image (will take about 30 minutes) passing in a build arg
-    ```shell
-    docker build --build-arg VIVADO_VERSION=2018.3 --build-arg VIVADO_TAR_FILE=Xilinx_Vivado_SDK_2018.3_1207_2324.tar.gz -t vivado:2018.3 .
+1. Download the Vivado installation package to this folder. E.g., download `Xilinx_Vivado_SDK_2018.3_1207_2324.tar.gz` to this folder.
+2. Build the image (will take about 30 minutes) passing in the build args. E.g., 
     ```
-
-## Running
-
-```shell
-docker run -ti --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix vivado:2018.3
-```
+    docker build --build-arg VIVADO_TAR_FILE=Xilinx_Vivado_SDK_2018.3_1207_2324.tar.gz -t vivado:2018.3 .
+    ```
